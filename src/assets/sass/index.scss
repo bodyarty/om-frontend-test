@@ -16,15 +16,32 @@ $control-btn-size: 96px;
 
 $btn-color-bg: #f8d231;
 $info-color-warning: #c6a827;
+
+$diagram-input-size: 92px;
+$diagram-input-color: #f8d231;
+$diagram-connection-color: #919e9f;
+
+$diagram-output-item-size: 112px;
+$diagram-output-item-color: #323033;
+
+$list-definition-border-color: rgba(207, 211, 214, 0.1);
+
 // ------------------------------------------------------------------------- //
 // 01 HEADER
 // ------------------------------------------------------------------------- //
+.header {
+    padding: 40px 0;
+}
+
 .header-inner {
     display: flex;
-    padding: 40px 0;
 
     .header-legend {
         width: 492px;
+
+		h1 {
+			color: $copy-color-accent;
+		}
 
         .text-small {
             margin: 182px 0 0;
@@ -48,7 +65,8 @@ $info-color-warning: #c6a827;
         padding: 0 152px;
 
         .input-form {
-			width: 100%;
+            width: 100%;
+            max-width: 844px;
 
             label {
                 display: block;
@@ -65,6 +83,7 @@ $info-color-warning: #c6a827;
                     padding: 32px 16px;
                     border: none;
                     font-family: $font-primary-regular;
+					color: $copy-color-primary;
                     box-sizing: border-box;
 
                     &::placeholder {
@@ -109,8 +128,212 @@ $info-color-warning: #c6a827;
             }
         }
     }
+
+    @include for-size(tablet-landscape-low) {
+        .header-form {
+            padding: 0 40px;
+        }
+    }
+
+    @include for-size(tablet-portrait-low) {
+        flex-wrap: wrap;
+
+        .header-legend {
+            width: 100%;
+
+            .text-small {
+                margin: 0;
+            }
+        }
+
+        .header-form {
+            padding: 0;
+            width: 100%;
+        }
+    }
 }
 
 // ------------------------------------------------------------------------- //
-// 02 HOW
+// 02 SECTION HOW
 // ------------------------------------------------------------------------- //
+.section-how {
+    padding: 120px 0;
+    color: $copy-color-primary-inverse;
+    background-color: $app-background-color-inverse;
+}
+
+.section-inner {
+    margin: 0 0 120px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &.how {
+        display: flex;
+        gap: 36px;
+    }
+
+    &.requirements {
+        .copy {
+            color: $copy-color-primary-inverse;
+        }
+        .tabs-wrapper {
+            margin: 40px 0 0 0;
+        }
+    }
+}
+
+.section-title {
+    margin: 0 0 40px;
+    color: $copy-color-accent-inverse;
+}
+
+.legend,
+.diagram {
+    width: 50%;
+}
+
+// DIAGRAM
+.diagram {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: stretch;
+    width: 600px;
+
+    .diagram-input {
+        flex: 0 0 auto;
+        align-self: center;
+        width: $diagram-input-size;
+        height: $diagram-input-size;
+        background-color: $diagram-input-color;
+    }
+
+    .diagram-connections {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: stretch;
+
+        .connection-shared {
+            display: flex;
+            flex: 1 1 auto;
+            align-self: center;
+            border-bottom: 1px dashed $diagram-connection-color;
+        }
+
+        .connections-forked {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 auto;
+            margin: 56px 0;
+            width: 147px;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                height: 100%;
+                border-left: 1px dashed $diagram-connection-color;
+            }
+
+            .connection {
+                width: 100%;
+                border-bottom: 1px dashed $diagram-connection-color;
+
+                &.bottom {
+                    margin: auto 0 0;
+                }
+            }
+        }
+    }
+
+    .diagram-output {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 36px;
+    }
+
+    .output-item {
+        position: relative;
+        width: $diagram-output-item-size;
+        height: $diagram-output-item-size;
+        background-color: $diagram-output-item-color;
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+// TABS
+.tabs-wrapper {
+    .tabs-header ul {
+        display: flex;
+        margin: 0 0 47px;
+
+        li {
+            display: inline-block;
+            margin: 0 16px 0 0;
+            color: $copy-color-mute-inverse;
+            opacity: 0.4;
+            cursor: pointer;
+
+            &.active {
+                color: $copy-color-accent-inverse;
+                opacity: 1;
+                border-bottom: 1px solid $copy-color-accent-inverse;
+                cursor: default;
+            }
+        }
+    }
+
+    .tabs-body {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+}
+
+.list-definition {
+    columns: 2;
+    column-gap: 56px;
+    font-family: $font-primary-light;
+
+    .list-definition-item {
+        padding: 12px 0;
+        border-bottom: 1px solid $list-definition-border-color;
+
+        dl {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 0 -10px;
+            font-family: $font-primary-light;
+
+            dt,
+            dd {
+                margin: 0 0 10px;
+            }
+
+            dt {
+                min-width: 250px;
+                flex: 0 1 auto;
+            }
+
+            dd {
+                flex: 1 0 auto;
+            }
+        }
+    }
+
+    @include for-size(tablet-portrait-low) {
+        columns: 1;
+    }
+}

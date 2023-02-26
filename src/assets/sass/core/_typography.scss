@@ -19,31 +19,42 @@
         font-family: $font;
         src: url('#{$src}.eot'); // IE9 compat
         src: url('#{$src}.ttf') format('truetype'),
-			 url('#{$src}.svg##{$font}') format('svg'); // legacy iOS
+            url('#{$src}.svg##{$font}') format('svg'); // legacy iOS
         font-style: $style;
         font-weight: $weight;
     }
 }
 
 %copy-size {
-	font-size: 24px;
+    font-size: 24px;
     line-height: 1.3333;
+    letter-spacing: -0.4px;
 }
 
 // ------------------------------------------------------------------------- //
 // 01 BODY
 // ------------------------------------------------------------------------- //
 body {
-	@extend %copy-size;
+    @extend %copy-size;
     font-family: $font-primary-light;
-	color: $copy-color-primary;
+    color: $copy-color-primary;
 }
 
 // ------------------------------------------------------------------------- //
 // 02 FONT
 // ------------------------------------------------------------------------- //
-@include font-face('grotesk-regular','#{$get-path-to-font}/SpaceGroteskRegular',normal,normal);
-@include font-face('grotesk-light','#{$get-path-to-font}/SpaceGroteskLight',normal,normal);
+@include font-face(
+    'grotesk-regular',
+    '#{$get-path-to-font}/SpaceGroteskRegular',
+    normal,
+    normal
+);
+@include font-face(
+    'grotesk-light',
+    '#{$get-path-to-font}/SpaceGroteskLight',
+    normal,
+    normal
+);
 
 // ------------------------------------------------------------------------- //
 // 03 HEADINGS
@@ -57,13 +68,15 @@ h6 {
     margin: 0;
     font-family: $font-primary-regular;
     font-size: em(48);
-	font-weight: normal;
+    font-weight: normal;
     line-height: 1.083;
+    letter-spacing: -1px;
 }
 
 // ------------------------------------------------------------------------- //
 // 04 TEXT
 // ------------------------------------------------------------------------- //
 .text-small {
-	font-size: em(12);
+    font-size: em(12);
+    letter-spacing: -.3px;
 }
