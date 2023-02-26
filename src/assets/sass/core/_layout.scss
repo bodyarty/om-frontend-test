@@ -1,0 +1,78 @@
+// ------------------------------------------------------------------------- //
+// LAYOUT
+//
+// TABLE OF CONTENTS
+// 01 VARIABLES
+// 02 HTML, BODY
+// ------------------------------------------------------------------------- //
+
+// ------------------------------------------------------------------------- //
+// 00 MIXINS
+// ------------------------------------------------------------------------- //
+@mixin for-size($media) {
+    @if $media == desktop-large-low {
+        @media (max-width: $desktop-lg) {
+            @content;
+        }
+    } @else if $media == desktop-low {
+        @media (max-width: $desktop) {
+            @content;
+        }
+    } @else if $media == tablet-landscape-low {
+        @media (max-width: $tablet-landscape) {
+            @content;
+        }
+    } @else if $media == tablet-portrait-low {
+        @media (max-width: $tablet-portrait) {
+            @content;
+        }
+    } @else if $media == phone-low {
+        @media (max-width: $phone) {
+            @content;
+        }
+    }
+}
+
+%wrapper {
+    margin: 0 auto;
+    padding: 0 $container-padding-hor;
+    width: 100%;
+    min-width: $min-width-overall;
+    max-width: $max-width-overall;
+
+    // RESPONSIVE - PHONE LOW
+    @include for-size(phone-low) {
+        padding: 0 $container-padding-hor;
+        width: 100%;
+    }
+}
+
+// ------------------------------------------------------------------------- //
+// 01 HTML, BODY
+// ------------------------------------------------------------------------- //
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: $app-background-color;
+}
+
+.main-skeleton {
+    margin: 0 auto;
+    box-sizing: border-box;
+    max-width: $max-width-overall;
+    border: $global-border-width solid $black-primary;
+}
+
+// ------------------------------------------------------------------------- //
+// 02 CONTENT
+// ------------------------------------------------------------------------- //
+.container {
+    @extend %wrapper;
+    position: relative;
+    box-sizing: border-box;
+    min-width: $min-width-overall;
+}

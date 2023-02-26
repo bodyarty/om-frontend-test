@@ -1,0 +1,116 @@
+// ------------------------------------------------------------------------- //
+// MAIN PAGE STYLES
+//
+// TABLE OF CONTENTS
+//
+// 00 VARIABLES
+// 01 HEADER
+// 02 HOW
+// ------------------------------------------------------------------------- //
+@import 'core/_imports';
+
+// ------------------------------------------------------------------------- //
+// 00 VARIABLES
+// ------------------------------------------------------------------------- //
+$control-btn-size: 96px;
+
+$btn-color-bg: #f8d231;
+$info-color-warning: #c6a827;
+// ------------------------------------------------------------------------- //
+// 01 HEADER
+// ------------------------------------------------------------------------- //
+.header-inner {
+    display: flex;
+    padding: 40px 0;
+
+    .header-legend {
+        width: 492px;
+
+        .text-small {
+            margin: 182px 0 0;
+
+            .terms-link {
+                font-family: $font-primary-regular;
+                text-decoration: none;
+                color: $copy-color-primary;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .header-form {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        padding: 0 152px;
+
+        .input-form {
+			width: 100%;
+
+            label {
+                display: block;
+                margin: 0 0 20px;
+            }
+
+            .control-accessory {
+                position: relative;
+                display: flex;
+
+                input {
+                    @extend %copy-size;
+                    flex: 1 1 auto;
+                    padding: 32px 16px;
+                    border: none;
+                    font-family: $font-primary-regular;
+                    box-sizing: border-box;
+
+                    &::placeholder {
+                        color: $copy-color-mute;
+                    }
+                }
+
+                .control-btn {
+                    flex: 0 0 auto;
+                    height: $control-btn-size;
+                    width: $control-btn-size;
+                    background: $btn-color-bg;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                .message-error {
+                    display: none;
+                    color: $info-color-warning;
+                    width: 100%;
+                }
+
+                .control-icon-warning {
+                    position: absolute;
+                    display: none;
+                    top: 50%;
+                    right: $control-btn-size + 16px;
+                    transform: translateY(-50%);
+                }
+
+                &.error {
+                    .message-error,
+                    .control-icon-warning {
+                        display: block;
+                    }
+
+                    .message-error {
+                        position: absolute;
+                        bottom: -24px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ------------------------------------------------------------------------- //
+// 02 HOW
+// ------------------------------------------------------------------------- //

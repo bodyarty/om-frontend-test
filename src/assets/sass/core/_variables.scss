@@ -1,0 +1,65 @@
+// ------------------------------------------------------------------------- //
+// VARIABLES GENERAL
+//
+// TABLE OF CONTENTS
+// 01 GENERAL SIZES
+// 02 FONTS
+// 03 COLORS
+// 99 PATHS
+// ------------------------------------------------------------------------- //
+
+// ------------------------------------------------------------------------- //
+// 01 GENERAL SIZES
+// ------------------------------------------------------------------------- //
+$desktop-lg                           : 1920px; // lg (xl is upper)
+$desktop                              : 1440px; // bg
+$tablet-landscape                     : 1200px; // md
+$tablet-portrait                      : 900px; // sm
+$phone                                : 600px; // xs
+
+$max-width-overall                    : 2048px;
+$min-width-overall                    : 300px;
+$min-height-overall                   : $min-width-overall;
+
+$container-padding-hor                : 40px;
+$container-padding-hor-sm             : 10px;
+
+$global-border-width                  : 12px;
+$global-border-width-sm               : 0;
+
+// ------------------------------------------------------------------------- //
+// 02 FONTS
+// ------------------------------------------------------------------------- //
+$font-primary-regular                : 'grotesk-regular', arial, helvetica, sans-serif;
+$font-primary-light                  : 'grotesk-light', arial, helvetica, sans-serif;
+
+// ------------------------------------------------------------------------- //
+// 03 COLORS
+// ------------------------------------------------------------------------- //
+$gray-primary                        : #eee;
+$gray-mute                           : #A4A3A4;
+$gray-mute-inverse                   : #CFD3D6;
+$gray-light                          : #F5F6F7;
+
+
+$black-primary                       : #1B191C;
+$black-secondary                     : #000;
+
+$app-background-color                : $gray-primary;
+$app-background-color-inverse        : $black-primary;
+
+$copy-color-primary                  : $black-primary;
+$copy-color-accent                   : $black-secondary;
+$copy-color-mute                     : $gray-mute;
+
+$copy-color-primary-inverse          : $gray-primary;
+$copy-color-accent-inverse           : $gray-light;
+$copy-color-mute-inverse             : $gray-mute-inverse;
+
+$diagram-border-color                : #919E9F;
+
+// ------------------------------------------------------------------------- //
+// 99 PATHS
+// ------------------------------------------------------------------------- //
+$get-path-to-images                  : '../../assets/images';
+$get-path-to-font                    : '../../assets/fonts';
