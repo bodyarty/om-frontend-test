@@ -10,6 +10,15 @@
 // ------------------------------------------------------------------------- //
 
 // ------------------------------------------------------------------------- //
+// 00 VARIABLES
+// ------------------------------------------------------------------------- //
+$copy-size-large: 48px;
+$copy-size-default: 24px;
+$copy-size-small: 12px;
+
+$line-height-default: 1.333;
+$line-height-small: 1.083;
+// ------------------------------------------------------------------------- //
 // 00 MIXINS
 // ------------------------------------------------------------------------- //
 
@@ -26,8 +35,8 @@
 }
 
 %copy-size {
-    font-size: 24px;
-    line-height: 1.3333;
+    font-size: $copy-size-default;
+    line-height: $line-height-default;
     letter-spacing: -0.4px;
 }
 
@@ -69,14 +78,19 @@ h6 {
     font-family: $font-primary-regular;
     font-size: em(48);
     font-weight: normal;
-    line-height: 1.083;
+    line-height: $line-height-small;
     letter-spacing: -1px;
+
+    @include for-size(tablet-portrait-low) {
+        font-size: em(36);
+        line-height: 1.1;
+    }
 }
 
 // ------------------------------------------------------------------------- //
 // 04 TEXT
 // ------------------------------------------------------------------------- //
 .text-small {
-    font-size: em(12);
-    letter-spacing: -.3px;
+    font-size: $copy-size-small;
+    letter-spacing: -0.3px;
 }

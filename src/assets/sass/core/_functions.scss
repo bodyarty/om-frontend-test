@@ -3,6 +3,7 @@
 //
 // TABLE OF CONTENTS
 // 01 EM
+// 02 MEDIA QUERIES
 // ------------------------------------------------------------------------- //
 
 
@@ -21,4 +22,31 @@ $browser-context: 24;
 	}
 
 	@return #{calc(ceil(calc($pixels / $context * 100)) / 100)}em;
+}
+
+// ------------------------------------------------------------------------- //
+// 02 MEDIA QUERIES
+// ------------------------------------------------------------------------- //
+@mixin for-size($media) {
+	// desktop first approach
+
+	@if $media == desktop-large-low {
+		@media (max-width:$desktop-lg) {@content;}
+	}
+
+	@else if $media == desktop-low {
+		@media (max-width:$desktop) {@content;}
+	}
+
+	@else if $media == tablet-landscape-low {
+		@media (max-width:$tablet-landscape) {@content;}
+	}
+
+	@else if $media == tablet-portrait-low {
+		@media (max-width:$tablet-portrait) {@content;}
+	}
+
+	@else if $media == phone-low {
+		@media (max-width:$phone) {@content;}
+	}
 }

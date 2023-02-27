@@ -8,11 +8,13 @@
 // 02 HOW
 // ------------------------------------------------------------------------- //
 @import 'core/_imports';
+@import 'components/player';
 
 // ------------------------------------------------------------------------- //
 // 00 VARIABLES
 // ------------------------------------------------------------------------- //
 $control-btn-size: 96px;
+$control-btn-size-sm: 64px;
 
 $btn-color-bg: #f8d231;
 $info-color-warning: #c6a827;
@@ -22,6 +24,7 @@ $diagram-input-color: #f8d231;
 $diagram-connection-color: #919e9f;
 
 $diagram-output-item-size: 112px;
+$diagram-output-item-size-sm: 60px;
 $diagram-output-item-color: #323033;
 
 $list-definition-border-color: rgba(207, 211, 214, 0.1);
@@ -31,6 +34,10 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
 // ------------------------------------------------------------------------- //
 .header {
     padding: 40px 0;
+
+    @include for-size(phone-low) {
+        padding: 20px 0;
+    }
 }
 
 .header-inner {
@@ -39,9 +46,15 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
     .header-legend {
         width: 492px;
 
-		h1 {
-			color: $copy-color-accent;
-		}
+        h1 {
+            color: $copy-color-accent;
+        }
+    }
+
+    .legend-description {
+        &.mobile {
+            display: none;
+        }
 
         .text-small {
             margin: 182px 0 0;
@@ -62,12 +75,13 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
         flex: 1 1 auto;
         display: flex;
         align-items: center;
-        padding: 0 152px;
+        justify-content: center;
+
+        .app-container {
+            width: 620px;
+        }
 
         .input-form {
-            width: 100%;
-            max-width: 844px;
-
             label {
                 display: block;
                 margin: 0 0 20px;
@@ -80,18 +94,20 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
                 input {
                     @extend %copy-size;
                     flex: 1 1 auto;
-                    padding: 32px 16px;
+                    padding: 32px 45px 32px 16px;
+                    width: 100%;
                     border: none;
                     font-family: $font-primary-regular;
-					color: $copy-color-primary;
+                    color: $copy-color-primary;
                     box-sizing: border-box;
+                    text-overflow: ellipsis;
 
                     &::placeholder {
                         color: $copy-color-mute;
                     }
                 }
 
-                .control-btn {
+                .btn-control {
                     flex: 0 0 auto;
                     height: $control-btn-size;
                     width: $control-btn-size;
@@ -131,7 +147,9 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
 
     @include for-size(tablet-landscape-low) {
         .header-form {
-            padding: 0 40px;
+            .app-container {
+                width: 420px;
+            }
         }
     }
 
@@ -139,6 +157,7 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
         flex-wrap: wrap;
 
         .header-legend {
+            margin: 0 0 40px;
             width: 100%;
 
             .text-small {
@@ -147,8 +166,61 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
         }
 
         .header-form {
+            margin: 0 0 40px;
+            justify-content: flex-start;
+        }
+
+        .legend-description {
+            display: none;
+
+            &.mobile {
+                display: block;
+
+                .text-small {
+                    margin-top: 12px;
+                }
+            }
+        }
+
+        .header-form {
             padding: 0;
             width: 100%;
+        }
+    }
+
+    @include for-size(phone-low) {
+        .header-form {
+            .input-form {
+                max-width: 100%;
+
+                .control-accessory {
+                    input {
+                        padding: 16px;
+                        width: 100%;
+                    }
+
+                    .btn-control {
+                        height: $control-btn-size-sm;
+                        width: $control-btn-size-sm;
+                    }
+
+                    .control-icon-warning {
+                        right: $control-btn-size-sm + 16px;
+                    }
+
+                    &.error {
+                        .message-error,
+                        .control-icon-warning {
+                            display: block;
+                        }
+
+                        .message-error {
+                            position: absolute;
+                            bottom: -24px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -160,6 +232,10 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
     padding: 120px 0;
     color: $copy-color-primary-inverse;
     background-color: $app-background-color-inverse;
+
+    @include for-size(phone-low) {
+        padding: 40px 0;
+    }
 }
 
 .section-inner {
@@ -180,6 +256,46 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
         }
         .tabs-wrapper {
             margin: 40px 0 0 0;
+        }
+    }
+
+    @include for-size(tablet-portrait-low) {
+        &.how {
+            flex-wrap: wrap;
+
+            .legend,
+            .diagram {
+                width: 100%;
+            }
+        }
+    }
+
+    @include for-size(phone-low) {
+        .diagram {
+            .diagram-connections {
+                .connections-forked {
+                    margin: $diagram-output-item-size-sm/2 0;
+                    width: 58px;
+                }
+            }
+
+            .diagram-input,
+            .output-item {
+                width: $diagram-output-item-size-sm;
+                height: $diagram-output-item-size-sm;
+            }
+
+            .output-item {
+                &.top svg {
+                    width: 46px;
+                    height: 28px;
+                }
+
+                &.bottom svg {
+                    width: 45px;
+                    height: 30px;
+                }
+            }
         }
     }
 }
@@ -226,7 +342,7 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
             display: flex;
             flex-direction: column;
             flex: 0 0 auto;
-            margin: 56px 0;
+            margin: $diagram-input-size/2 0;
             width: 147px;
 
             &::before {
@@ -275,10 +391,12 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
 .tabs-wrapper {
     .tabs-header ul {
         display: flex;
-        margin: 0 0 47px;
+        margin: 0 0 44px;
 
         li {
-            display: inline-block;
+            display: inline-flex;
+            align-items: flex-end;
+            flex: 1 1 0;
             margin: 0 16px 0 0;
             color: $copy-color-mute-inverse;
             opacity: 0.4;
@@ -302,6 +420,7 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
     }
 }
 
+// LIST DEFINITION
 .list-definition {
     columns: 2;
     column-gap: 56px;
@@ -335,5 +454,16 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
 
     @include for-size(tablet-portrait-low) {
         columns: 1;
+    }
+
+    @include for-size(phone-low) {
+        .list-definition-item {
+            dl {
+                dt,
+                dd {
+                    width: 100%;
+                }
+            }
+        }
     }
 }

@@ -9,30 +9,6 @@
 // ------------------------------------------------------------------------- //
 // 00 MIXINS
 // ------------------------------------------------------------------------- //
-@mixin for-size($media) {
-    @if $media == desktop-large-low {
-        @media (max-width: $desktop-lg) {
-            @content;
-        }
-    } @else if $media == desktop-low {
-        @media (max-width: $desktop) {
-            @content;
-        }
-    } @else if $media == tablet-landscape-low {
-        @media (max-width: $tablet-landscape) {
-            @content;
-        }
-    } @else if $media == tablet-portrait-low {
-        @media (max-width: $tablet-portrait) {
-            @content;
-        }
-    } @else if $media == phone-low {
-        @media (max-width: $phone) {
-            @content;
-        }
-    }
-}
-
 %wrapper {
     margin: 0 auto;
     padding: 0 $container-padding-hor;
@@ -42,7 +18,7 @@
 
     // RESPONSIVE - PHONE LOW
     @include for-size(phone-low) {
-        padding: 0 $container-padding-hor;
+        padding: 0 $container-padding-hor-sm;
         width: 100%;
     }
 }
@@ -65,6 +41,10 @@ body {
     box-sizing: border-box;
     max-width: $max-width-overall;
     border: $global-border-width solid $black-primary;
+
+    @include for-size(phone-low) {
+        border: none;
+    }
 }
 
 // ------------------------------------------------------------------------- //

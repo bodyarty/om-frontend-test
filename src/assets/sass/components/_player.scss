@@ -1,0 +1,180 @@
+// ------------------------------------------------------------------------- //
+// PLAYER
+//
+// TABLE OF CONTENTS
+// 01 VARIABLES
+// 02 PLAYER
+// ------------------------------------------------------------------------- //
+
+// ------------------------------------------------------------------------- //
+// 00 VARIABLES
+// ------------------------------------------------------------------------- //
+$player-range-color: #fff;
+$player-range-inverse: #c4c4c4;
+
+$player-range-color-secondary: #fff;
+$player-range-inverse-secondary: #000;
+
+$player-indent-size: 20px;
+$control-range-height: 2px;
+
+// ------------------------------------------------------------------------- //
+// 01 PLAYER
+// ------------------------------------------------------------------------- //
+.btn-link {
+    @extend %copy-size;
+    border: none;
+    cursor: pointer;
+}
+
+.player-container {
+    .player-container-header {
+        margin: 0 0 $player-indent-size;
+    }
+}
+
+.player {
+    --seek-before-width: 0%;
+    --volume-before-width: 100%;
+    --player-range-color: #c4c4c4;
+    --player-range-value-color: #fff;
+    position: relative;
+    padding: $player-indent-size;
+    min-height: 198px;
+    box-sizing: border-box;
+    background-color: $gray-mute-inverse;
+}
+
+.control-play {
+    position: absolute;
+    top: $player-indent-size;
+    left: $player-indent-size;
+    cursor: pointer;
+}
+
+.timer {
+    position: absolute;
+    left: $player-indent-size;
+    bottom: $player-indent-size;
+}
+
+.control-track {
+    position: relative;
+    margin: 90px 0 0;
+    width: 100%;
+}
+
+// ------------------------------------------------------------------------- //
+// 02 RANGE CONTROLS
+// ------------------------------------------------------------------------- //
+input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type='range']:focus {
+    outline: none;
+}
+
+// DEFAULT RANGE CONTROL
+input[type='range']::-webkit-slider-runnable-track {
+    height: $control-range-height;
+    background: linear-gradient(
+        90deg,
+        var(--player-range-value-color) var(--seek-before-width),
+        var(--player-range-color) var(--seek-before-width)
+    );
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -6px;
+    width: 16px;
+    height: 12px;
+    border-radius: 6px;
+    background-color: var(--player-range-value-color);
+}
+
+// FIREFOX
+input[type='range']::-moz-range-track {
+    height: $control-range-height;
+    background: linear-gradient(
+        90deg,
+        $player-range-color var(--seek-before-width),
+        $player-range-inverse var(--seek-before-width)
+    );
+}
+
+input[type='range']::-moz-range-thumb {
+    border-radius: 0;
+    border: none;
+    background-color: var(--player-range-value-color);
+    width: 16px;
+    height: 12px;
+    border-radius: 6px;
+}
+
+// RANGE CONTROL FOR VOLUME
+.control-volume {
+    --player-range-color: #fff;
+    --player-range-value-color: #000;
+    --seek-before-width: var(--volume-before-width);
+    position: absolute;
+    right: $player-indent-size;
+    bottom: calc(
+        $player-indent-size + ($copy-size-small + $control-range-height) / 2
+    );
+    width: 252px;
+
+    &[type='range']::-webkit-slider-thumb {
+        border-radius: 0;
+    }
+}
+
+// ------------------------------------------------------------------------- //
+// 03 BUFFERING LOADER
+// ------------------------------------------------------------------------- //
+.loader-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    overflow: hidden;
+    background-color: $gray-mute-inverse;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.loader-line:before {
+    content: '';
+    position: absolute;
+    left: -50%;
+    height: 3px;
+    width: 40%;
+    background-color: $gray-light;
+    -webkit-animation: lineAnim 1s linear infinite;
+    -moz-animation: lineAnim 1s linear infinite;
+    animation: lineAnim 1s linear infinite;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+@keyframes lineAnim {
+    0% {
+        left: -40%;
+    }
+    50% {
+        left: 20%;
+        width: 80%;
+    }
+    100% {
+        left: 100%;
+        width: 100%;
+    }
+}

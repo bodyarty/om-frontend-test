@@ -41,9 +41,13 @@ $gray-mute                           : #A4A3A4;
 $gray-mute-inverse                   : #CFD3D6;
 $gray-light                          : #F5F6F7;
 
+$gray-controls                       : #c4c4c4;
+$white                               : #fff;
+$black                               : #000;
+
 
 $black-primary                       : #1B191C;
-$black-secondary                     : #000;
+$black-secondary                     : $black;
 
 $app-background-color                : $gray-primary;
 $app-background-color-inverse        : $black-primary;
