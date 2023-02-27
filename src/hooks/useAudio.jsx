@@ -43,7 +43,7 @@ export function useAudio(audio, trackRange) {
         trackRange.current.max = duration;
     }
 
-	// ISPLAYING STATE 
+	// PLAYING STATE 
     function changePlayHandler() {
         isPlaying ? audio.current.pause() : audio.current.play();
         setIsPlaying((prev) => !prev);
