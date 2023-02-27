@@ -71,7 +71,7 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
         }
     }
 
-    .header-form {
+    .header-app {
         flex: 1 1 auto;
         display: flex;
         align-items: center;
@@ -146,7 +146,7 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
     }
 
     @include for-size(tablet-landscape-low) {
-        .header-form {
+        .header-app {
             .app-container {
                 width: 420px;
             }
@@ -165,7 +165,7 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
             }
         }
 
-        .header-form {
+        .header-app {
             margin: 0 0 40px;
             justify-content: flex-start;
         }
@@ -182,14 +182,18 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
             }
         }
 
-        .header-form {
+        .header-app {
             padding: 0;
             width: 100%;
         }
     }
 
     @include for-size(phone-low) {
-        .header-form {
+        .header-app {
+            .app-container {
+                width: 100%;
+            }
+
             .input-form {
                 max-width: 100%;
 
@@ -274,7 +278,7 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
         .diagram {
             .diagram-connections {
                 .connections-forked {
-                    margin: $diagram-output-item-size-sm/2 0;
+                    margin: calc($diagram-output-item-size-sm / 2) 0;
                     width: 58px;
                 }
             }
@@ -342,7 +346,7 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
             display: flex;
             flex-direction: column;
             flex: 0 0 auto;
-            margin: $diagram-input-size/2 0;
+            margin: calc($diagram-input-size / 2) 0;
             width: 147px;
 
             &::before {
@@ -396,7 +400,6 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
         li {
             display: inline-flex;
             align-items: flex-end;
-            flex: 1 1 0;
             margin: 0 16px 0 0;
             color: $copy-color-mute-inverse;
             opacity: 0.4;
@@ -416,6 +419,12 @@ $list-definition-border-color: rgba(207, 211, 214, 0.1);
 
         &.active {
             display: block;
+        }
+    }
+
+    @include for-size(phone-low) {
+        .tabs-header ul li {
+            flex: 1 1 0;
         }
     }
 }

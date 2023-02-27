@@ -8,13 +8,7 @@
 
 // ------------------------------------------------------------------------- //
 // 00 VARIABLES
-// ------------------------------------------------------------------------- //
-$player-range-color: #fff;
-$player-range-inverse: #c4c4c4;
-
-$player-range-color-secondary: #fff;
-$player-range-inverse-secondary: #000;
-
+// ------------------------------------------------------------------------- /
 $player-indent-size: 20px;
 $control-range-height: 2px;
 
@@ -103,8 +97,8 @@ input[type='range']::-moz-range-track {
     height: $control-range-height;
     background: linear-gradient(
         90deg,
-        $player-range-color var(--seek-before-width),
-        $player-range-inverse var(--seek-before-width)
+        var(--player-range-value-color) var(--seek-before-width),
+        var(--player-range-color) var(--seek-before-width)
     );
 }
 
@@ -131,6 +125,10 @@ input[type='range']::-moz-range-thumb {
 
     &[type='range']::-webkit-slider-thumb {
         border-radius: 0;
+    }
+
+    @include for-size(phone-low) {
+        width: 191px;
     }
 }
 
